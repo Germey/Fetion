@@ -3,11 +3,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link  type="text/css" href="css/style.css" rel ="stylesheet"/>
 		<script src="js/jquery-2.1.0.js"></script>
-		<title>Get方式发送飞信</title>
+		<title>Post方式发送飞信</title>
 	</head>
 	<body>
 		
-		<form name="GetFetion" method="get" action="gsend.php">
+		<form name="PostFetion" method="post" action="php/psend.php">
 			<div class = "title">飞信短信</div>
 			<div>
 			 <div><input name="user" type="text" id="user" tabindex="1"  maxlength="11" placeholder="您的手机号"/></div>
@@ -22,7 +22,7 @@
 			 <div class = "illegal" id="number_illegal" hidden="true"><img class = "wrong" src="images/wrong.png"/>请填写正确的手机号</div>
 			 <div class = "legal" id="number_legal" hidden="true"><img class = "right" src="images/right.png"/></div >
 			 <div class = "clear"></div>
-			 <div><input name="text" type="text" id="text" tabindex="4"  maxlength="150" placeholder="发送内容"/></div>
+			  <div><textarea name="text" type="text" id="text" tabindex="4"  placeholder="发送内容"></textarea></div>
 			 <div class = "illegal" id="text_illegal" hidden="true"><img class = "wrong" src="images/wrong.png"/>请填写内容</div>
 			 <div class = "legal" id="text_legal" hidden="true"><img class = "right" src="images/right.png"/></div >
 			 <div class = "clear"></div>
@@ -36,7 +36,7 @@
 			//光标移开判断user是否合法
 			$("#user").blur(function(){
 				var user = $("#user").val();
-				if((user.length != 11) || (!user.match(/^1[3|4|5|8][0-9]\d{4,8}$/))){
+				if((user.length != 11) || (!user.match(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|17[6|7|8]|18[0-9])\d{8}$/))){
 						$('#user_illegal').show();
 						$('#user_legal').hide();				
 				}else{
@@ -59,7 +59,7 @@
 			//光标移开判断number是否合法
 			$("#number").blur(function(){
 				var number = $("#number").val();
-				if((number.length != 11) || (!number.match(/^1[3|4|5|8][0-9]\d{4,8}$/))){
+				if((number.length != 11) || (!number.match(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|17[6|7|8]|18[0-9])\d{8}$/))){
 						$('#number_illegal').show();
 						$('#number_legal').hide();				
 				}else{
@@ -82,7 +82,7 @@
 			//点击发送按钮全部判定
 			$("#sub").click(function(){
 				var user = $("#user").val();
-				if((user.length != 11) || (!user.match(/^1[3|4|5|8][0-9]\d{4,8}$/))){
+				if((user.length != 11) || (!user.match(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|17[6|7|8]|18[0-9])\d{8}$/))){
 						$('#user_illegal').show();
 						$('#user_legal').hide();				
 				}else{
@@ -98,7 +98,7 @@
 					$('#key_legal').show();
 				}
 				var number = $("#number").val();
-				if((number.length != 11) || (!number.match(/^1[3|4|5|8][0-9]\d{4,8}$/))){
+				if((number.length != 11) || (!number.match(/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|17[6|7|8]|18[0-9])\d{8}$/))){
 						$('#number_illegal').show();
 						$('#number_legal').hide();				
 				}else{

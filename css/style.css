@@ -1,6 +1,7 @@
 body{
 	font-family:"Microsoft Yahei";
 	font-size:14px;
+	background-color:#eee;
 }
 form{
 	width: 400px;
@@ -50,4 +51,44 @@ img{
 	font-size: 20px;
 	font-weight: bold;
 	margin: 15px auto;
+}
+textarea{
+	float: left;
+	width: 200px;
+	height: 300px;
+	font-size: 13px;
+	position: relative;
+	left: 5px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-right: 10px;
+}
+.container {
+	width:230px;
+	height:200px;
+	margin:auto;
+	text-align:center;
+}
+.container .link{
+	color: black;
+	background: #F08F8F;
+	width: 200px;
+	height: 40px;
+	float: left;
+	margin: 10px;
+	line-height: 40px;
+}
+.container .link:hover{
+	background:#F77979;
+}
+.container a{
+	text-decoration:none;
+}
+.choose{
+	width: 200px;
+	margin: auto;
+	text-align: center;
+	font-size: 26px;
+	padding: 50px;
+	font-weight: bold;
 }

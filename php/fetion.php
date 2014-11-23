@@ -35,12 +35,19 @@ class PHPFetion
      * @var string
      */
     protected $_csrfToten = null;
-
+	/**
+     * 登录状态
+     * @var string
+     */
+	 
+	public $_loginResult = null;
     /**
      * 构造函数
      * @param string $mobile 手机号(登录者)
      * @param string $password 飞信密码
      */
+	
+	 
     public function __construct($mobile, $password)
     {
         if ($mobile === '' || $password === '')
@@ -50,8 +57,8 @@ class PHPFetion
         
         $this->_mobile = $mobile;
         $this->_password = $password;
-        
-        $this->_login();
+        $this->_loginResult = $this->_login();
+		
     }
 
     /**
@@ -81,7 +88,7 @@ class PHPFetion
         }
         
         $result = $this->_postWithCookie('/im/login/cklogin.action', '');
-
+		
         return $result;
     }
 
@@ -95,19 +102,18 @@ class PHPFetion
     {
         if ($message === '')
         {
-            return '';
+            return ($this->_loginResult).'NoMessage';
         }
-
         //判断是给自己发还是给好友发
         if ($mobile == $this->_mobile)
         {
-            return $this->_toMyself($message);
+            return ($this->_loginResult).($this->_toMyself($message));
         }
         else
         {
             $uid = $this->_getUid($mobile);
 
-            return $uid === '' ? '' : $this->_toUid($uid, $message);
+            return ($this->_loginResult).($uid === '' ? '' : $this->_toUid($uid, $message));
         }
     }
 
